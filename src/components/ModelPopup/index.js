@@ -27,7 +27,7 @@ const ModelPopup = ({ open, onClose, imageUrl, info, model, video, onAudioEnded,
 
     return (
         <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
-            <DialogTitle>Infomation of model</DialogTitle>
+            <DialogTitle>Information of model</DialogTitle>
             <DialogContent className='dialogContent'>
                 {imageUrl ? (
                     <Canvas style={{ height: '400px' }}>
@@ -35,31 +35,23 @@ const ModelPopup = ({ open, onClose, imageUrl, info, model, video, onAudioEnded,
                         <PictureFrame
                             position={[0, 0, 0]}
                             rotation={[0, 0, 0]}
-                            scale={3} // Adjust scale as needed
+                            scale={3}
                             imageUrl={imageUrl}
-                            info={info} // Pass the info to PictureFrame
+                            info={info}
                             onClick={() => {}}
                         />
-                        <OrbitControls />
                     </Canvas>
                 ) : model ? (
                     <Canvas style={{ height: '400px' }}>
                         <ambientLight intensity={1} />
                         <primitive object={model} scale={[2, 2, 2]} />
-                        <OrbitControls />
                     </Canvas>
                 ) : (
-                    <div>Không có thông tin để hiển thị</div>
+                    <div>No model available</div>
                 )}
-
                 {video && tourActive && (
                     <audio ref={audioRef} controls src={video} autoPlay></audio>
                 )}
-
-                {video && !tourActive && (
-                    <audio ref={audioRef} controls src={video}></audio>
-                )}
-
             </DialogContent>
             <DialogActions>
                 <Button onClick={onClose} color="primary">Close</Button>

@@ -5,8 +5,8 @@ import CameraContext from '../../helpers/CameraContext';
 
 // Các khu vực bị giới hạn
 
-const restrictedAreaCenter = new THREE.Vector3(0, 0, 0); // Tọa độ trung tâm của vòng tròn
-const restrictedAreaRadius = 25; // Bán kính của khu vực giới hạn
+// const restrictedAreaCenter = new THREE.Vector3(0, 0, 0); // Tọa độ trung tâm của vòng tròn
+// const restrictedAreaRadius = 25; // Bán kính của khu vực giới hạn
 
 const restrictedAreas = [
     //tranh
@@ -64,10 +64,10 @@ const Movement2 = ({ cameraPosition, cameraRotation, clicked, freeExploration })
         previousPosition.current.copy(camera.position); // Khởi tạo vị trí trước đó
     }, [camera, cameraPosition, cameraRotation]);
 
-    const isInsideRestrictedCircle = (position) => {
-        const distanceToCenter = position.distanceTo(restrictedAreaCenter);
-        return distanceToCenter <= restrictedAreaRadius;
-    };
+    // const isInsideRestrictedCircle = (position) => {
+    //     const distanceToCenter = position.distanceTo(restrictedAreaCenter);
+    //     return distanceToCenter <= restrictedAreaRadius;
+    // };
 
     const isInRestrictedArea = (position) => {
         for (let area of restrictedAreas) {
@@ -283,22 +283,22 @@ const Movement2 = ({ cameraPosition, cameraRotation, clicked, freeExploration })
         }
 
         // Kiểm tra khu vực giới hạn di chuyển và khu vực cấm
-        if (isInRestrictedArea(camera.position) || !isInsideRestrictedCircle(camera.position)) {
-            camera.position.copy(previousPosition.current);
-            velocity.current.set(0, 0, 0); // Dừng di chuyển
-        } else {
-            previousPosition.current.copy(camera.position); // Cập nhật vị trí trước đó
-        }
-        if (rotateRight.current) {
-            targetYaw.current -= rotateSpeed;
-        }
+        // if (isInRestrictedArea(camera.position) || !isInsideRestrictedCircle(camera.position)) {
+        //     camera.position.copy(previousPosition.current);
+        //     velocity.current.set(0, 0, 0); // Dừng di chuyển
+        // } else {
+        //     previousPosition.current.copy(camera.position); // Cập nhật vị trí trước đó
+        // }
+        // if (rotateRight.current) {
+        //     targetYaw.current -= rotateSpeed;
+        // }
 
         yaw.current = THREE.MathUtils.lerp(yaw.current, targetYaw.current, 0.1);
         camera.rotation.set(0, yaw.current, 0);
         setYaw(camera.rotation.y);
 
-        camera.position.x = THREE.MathUtils.clamp(camera.position.x, -61, 61);
-        camera.position.z = THREE.MathUtils.clamp(camera.position.z, -25, 25);
+        camera.position.x = THREE.MathUtils.clamp(camera.position.x, -20, 25);
+        camera.position.z = THREE.MathUtils.clamp(camera.position.z, -15, 15);
 
         // In tọa độ người dùng
         console.log('Current Position:', camera.position);

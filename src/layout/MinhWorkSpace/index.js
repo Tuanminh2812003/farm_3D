@@ -59,7 +59,7 @@ const modelsConfig = useMemo(
             path: "/Farm/Model_baotang_full_19-3/BaoTang_2_main_bake_clean_all.glb",
             position: [0, 0, 0],
             rotation: [0, 0, 0],
-            scale: [0.5, 0.5, 0.5],
+            scale: [1, 1, 1],
             clickable: false,
         },
         
@@ -109,8 +109,8 @@ const modelsConfig = useMemo(
     const [selectedInfo, setSelectedInfo] = useState(null); 
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [currentItemIndex, setCurrentItemIndex] = useState(0);
-    const [cameraPosition, setCameraPosition] = useState(new Vector3(0, 1.6, 12));
-    const [cameraRotation, setCameraRotation] = useState(new Euler(0, 2 * Math.PI, 0));
+    const [cameraPosition, setCameraPosition] = useState(new Vector3(12, 1.6, 0));
+    const [cameraRotation, setCameraRotation] = useState(new Euler(0, 1/2 * Math.PI, 0));
     const [showDetailsPrompt, setShowDetailsPrompt] = useState(false); // <-- Added state for details prompt
     const [promptTimeout, setPromptTimeout] = useState(null); // <-- Added state for prompt timeout
     const [showHowToMove, setShowHowToMove] = useState(true); // <-- Added state for how to move popup
