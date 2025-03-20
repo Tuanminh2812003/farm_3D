@@ -56,7 +56,7 @@ function Home2(){
 const modelsConfig = useMemo(
     () => [
         {
-            path: "/Farm/BaoTang_testbake_1.glb",
+            path: "/Farm/Model_baotang_full_19-3/BaoTang_2_main_bake_clean_all.glb",
             position: [0, 0, 0],
             rotation: [0, 0, 0],
             scale: [0.5, 0.5, 0.5],
