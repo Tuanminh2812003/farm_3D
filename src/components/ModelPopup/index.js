@@ -6,6 +6,15 @@ import PictureFrame from '../../components/PictureFrame';
 import "./ModelPopUp.css";
 
 const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, onAudioEnded, tourActive }) => {
+
+
+    console.log('modelUrl:', modelUrl);
+    if (typeof modelUrl === 'string') {
+        console.error('valid string');
+    } else {
+        console.error('modelUrl is not a valid string');
+    }
+
     console.log('ModelPopup', modelUrl);
     
     const audioRef = useRef(null);
@@ -39,10 +48,10 @@ const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, onAudioEnd
                             rotation={[0, 0, 0]}
                             scale={3}
                             imageUrl={imageUrl}
-                            modelUrl={"/Farm/Model_baotang_full_19-3/model_anh_treo/img_01.glb"}
+                            modelUrl={modelUrl}
                             info={info}
                             onClick={() => {}}
-                            type={'image'}
+                            type={'model'}
                         />
                         <OrbitControls />
                     </Canvas>

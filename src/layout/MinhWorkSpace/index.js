@@ -62,6 +62,13 @@ const modelsConfig = useMemo(
             scale: [1, 1, 1],
             clickable: false,
         },
+        {
+            path: "/Farm/Model_baotang_full_19-3/BaoTang_2_main_bake_clean_map.glb",
+            position: [0, 0, 0],
+            rotation: [0, 0, 0],
+            scale: [1, 1, 1],
+            clickable: false,
+        },
         
         ],
         []
@@ -197,7 +204,6 @@ const modelsConfig = useMemo(
         setSelectedImageUrl(imageUrl);
         setSelectedInfo(info); // Set the selected info
         setSelectedVideo(video); // Set the selected video link
-        setSelectedModel(modelUrl); // If it's a model, set it
         setPopupOpen(true);
         setShowDetailsPrompt(false); // Hide the details prompt when popup opens
         setTourPopupOpen(false); // Hide the tour popup when model popup opens
@@ -676,65 +682,55 @@ const modelsConfig = useMemo(
                     </Canvas>
 
                     {/* Thanh sidebar */}
-                    <div className='sidebarMain'>
-                        {/* <div className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handlePreviousItem}>
-                            <MdSkipPrevious />
-                        </div>
-                        <div className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handleNextItem}>
-                            <MdSkipNext />
-                        </div> */}
-                        <div className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handleOpenPopUpUpdate}>
-                            <MdSkipPrevious />
-                        </div>
-                        <div className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handleOpenPopUpUpdate}>
-                            <MdSkipNext />
-                        </div>
-                        {!isFullscreen ? (
-                            <button className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handleFullscreenToggle}><MdOutlineZoomOutMap /></button>
-                        ) : (
-                            <button className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handleFullscreenToggle}><MdOutlineZoomInMap /></button>
-                        )}
-                        <div type = "button" className={`sidebar ${navToggle ? 'sidebar-change' : ""}`} onClick={navHandler}>
-                            <div className='sidebar-top'></div>
-                            <div className='sidebar-middle'></div>
-                            <div className='sidebar-bottom'></div>
-                        </div>
-                    </div>
-                    {navToggle ? (
-                        <div className='sidebarDisc'>
-                            <div className='sidebarDisc__button' onClick={handleFullscreenToggle}>
-                                <div className='sidebarDisc__button__text'>Chế độ toàn màn hình</div>
-                                {!isFullscreen ? (
-                                    <button className={`fullscreen_button`}><MdOutlineZoomOutMap /></button>
-                                ) : (
-                                    <button className={`fullscreen_button`}><MdOutlineZoomInMap /></button>
-                                )}
-                            </div>
-                            <div className='sidebarDisc__button' onClick={handleOpenInstructions}>
-                                <div className='sidebarDisc__button__text'>Hướng dẫn di chuyển</div>
-                                <div className='sidebarDisc__button__btn'><RiDragMoveFill /></div>
-                            </div>
-                            <div className='sidebarDisc__button' onClick={handleStartVideo}>
-                                <div className='sidebarDisc__button__text'>Bắt đầu tham quan</div>
-                                <div className='sidebarDisc__button__btn'><SiAwesomelists /></div>
-                            </div>
-                            {/* <div className='sidebarDisc__button' onClick={startTour}>
-                                <div className='sidebarDisc__button__text'>Start tour</div>
-                                <div className='sidebarDisc__button__btn'><SiAwesomelists /></div>
-                            </div> */}
-                            <div className='sidebarDisc__button' onClick={handleOpenPopUpListModel}>
-                                <div className='sidebarDisc__button__text'>Danh sách mẫu vật</div>
-                                <div className='sidebarDisc__button__btn'><PiListStarFill /></div>
-                            </div>
-                            <div className='sidebarDisc__button' onClick={handleOpenPopUpAboutTheExhibition}>
-                                <div className='sidebarDisc__button__text'>Về triển lãm</div>
-                                <div className='sidebarDisc__button__btn'><BsNewspaper /></div>
-                            </div>
-                        </div>
-                    ) : (
-                        ""
-                    )}
-                    {/* Thanh sidebar */}
+                                        <div className='sidebarMain'>
+                                            <div className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handlePreviousItem}>
+                                                <MdSkipPrevious />
+                                            </div>
+                                            <div className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handleNextItem}>
+                                                <MdSkipNext />
+                                            </div>
+                                            {!isFullscreen ? (
+                                                <button className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handleFullscreenToggle}><MdOutlineZoomOutMap /></button>
+                                            ) : (
+                                                <button className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handleFullscreenToggle}><MdOutlineZoomInMap /></button>
+                                            )}
+                                            <div type = "button" className={`sidebar ${navToggle ? 'sidebar-change' : ""}`} onClick={navHandler}>
+                                                <div className='sidebar-top'></div>
+                                                <div className='sidebar-middle'></div>
+                                                <div className='sidebar-bottom'></div>
+                                            </div>
+                                        </div>
+                                        {navToggle ? (
+                                            <div className='sidebarDisc'>
+                                                <div className='sidebarDisc__button' onClick={handleFullscreenToggle}>
+                                                    <div className='sidebarDisc__button__text'>Enter fullscreen</div>
+                                                    {!isFullscreen ? (
+                                                        <button className={`fullscreen_button`}><MdOutlineZoomOutMap /></button>
+                                                    ) : (
+                                                        <button className={`fullscreen_button`}><MdOutlineZoomInMap /></button>
+                                                    )}
+                                                </div>
+                                                <div className='sidebarDisc__button' onClick={handleOpenInstructions}>
+                                                    <div className='sidebarDisc__button__text'>How to move</div>
+                                                    <div className='sidebarDisc__button__btn'><RiDragMoveFill /></div>
+                                                </div>
+                                                <div className='sidebarDisc__button' onClick={startTour}>
+                                                    <div className='sidebarDisc__button__text'>Start tour</div>
+                                                    <div className='sidebarDisc__button__btn'><SiAwesomelists /></div>
+                                                </div>
+                                                <div className='sidebarDisc__button' onClick={handleOpenPopUpListModel}>
+                                                    <div className='sidebarDisc__button__text'>List model</div>
+                                                    <div className='sidebarDisc__button__btn'><PiListStarFill /></div>
+                                                </div>
+                                                <div className='sidebarDisc__button' onClick={handleOpenPopUpAboutTheExhibition}>
+                                                    <div className='sidebarDisc__button__text'>About the Exhibition</div>
+                                                    <div className='sidebarDisc__button__btn'><BsNewspaper /></div>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            ""
+                                        )}
+                                        {/* Thanh sidebar */}
 
                     {/* Nút bấm di chuyển */}
                     {freeExploration && (
