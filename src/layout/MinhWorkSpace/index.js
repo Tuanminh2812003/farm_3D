@@ -56,7 +56,7 @@ function Home2(){
 const modelsConfig = useMemo(
     () => [
         {
-            path: "/Farm/Model_baotang_full_19-3/BaoTang_2_main_bake_clean_all.glb",
+            path: "/Farm/Model_baotang_full_19-3/BaoTang_2_main_bake_clean_map.glb",
             position: [0, 0, 0],
             rotation: [0, 0, 0],
             scale: [1, 1, 1],
@@ -152,11 +152,11 @@ const modelsConfig = useMemo(
     // move
 
     // click và các chức năng liên quan
-    const handlePictureClick = useCallback((position, rotation, imageUrl, model, info, video) => {
+    const handlePictureClick = useCallback((position, rotation, imageUrl, modelUrl, info, video) => {
         console.log("handlePictureClick called with position:", position);
         console.log("handlePictureClick called with rotation:", rotation);
         console.log("handlePictureClick called with imageUrl:", imageUrl);
-        console.log("handlePictureClick called with model:", model);
+        console.log("handlePictureClick called with model:", modelUrl);
         console.log("handlePictureClick called with info:", info);
         console.log("handlePictureClick called with video", video);
         
@@ -183,7 +183,7 @@ const modelsConfig = useMemo(
         setTargetPosition(newCameraPosition);
         setTargetRotation(newCameraRotation);
         setSelectedImageUrl(imageUrl);
-        setSelectedModel(model);
+        setSelectedModel(modelUrl);
         setSelectedInfo(info);
         setSelectedVideo(video);
         setClicked(true);
@@ -192,13 +192,16 @@ const modelsConfig = useMemo(
         setPromptTimeout(setTimeout(() => setShowDetailsPrompt(false), 5000)); // Ẩn prompt sau 5 giây
     }, [tourIndex, tourActive]);    
     
-    const handleDetailClick = (imageUrl, info, video) => {
+    const handleDetailClick = (imageUrl, info, video, modelUrl) => {
+        console.log("Model in handleDetailClick:", modelUrl);
         setSelectedImageUrl(imageUrl);
         setSelectedInfo(info); // Set the selected info
         setSelectedVideo(video); // Set the selected video link
+        setSelectedModel(modelUrl); // If it's a model, set it
         setPopupOpen(true);
         setShowDetailsPrompt(false); // Hide the details prompt when popup opens
         setTourPopupOpen(false); // Hide the tour popup when model popup opens
+        console.log("Selected Model:", selectedModel); // Debugging the selected model
     
         if (countdownInterval) {
             clearInterval(countdownInterval); // Dừng bộ đếm thời gian
@@ -216,6 +219,8 @@ const modelsConfig = useMemo(
             audio.play();
             audio.onended = handleAudioEnded;
         }
+
+        console.log(modelUrl);
     };    
 
     const updateCameraState = (position, rotation) => {
@@ -238,7 +243,7 @@ const modelsConfig = useMemo(
     };
 
     const handleListItemClick = (item) => {
-        handlePictureClick(item.position, item.rotation, item.imageUrl, null, item.info);
+        handlePictureClick(item.position, item.rotation, item.imageUrl, item.modelUrl, item.info);
         handleClosePopUpListModel();
     };
 
@@ -247,7 +252,7 @@ const modelsConfig = useMemo(
             const nextIndex = currentItemIndex + 1;
             setCurrentItemIndex(nextIndex);
             const nextItem = items[nextIndex];
-            handlePictureClick(nextItem.position, nextItem.rotation, nextItem.imageUrl, null, nextItem.info);
+            handlePictureClick(nextItem.position, nextItem.rotation, nextItem.imageUrl, nextItem.modelUrl, nextItem.info);
         }
     };
 
@@ -256,7 +261,7 @@ const modelsConfig = useMemo(
             const prevIndex = currentItemIndex - 1;
             setCurrentItemIndex(prevIndex);
             const prevItem = items[prevIndex];
-            handlePictureClick(prevItem.position, prevItem.rotation, prevItem.imageUrl, null, prevItem.info);
+            handlePictureClick(prevItem.position, prevItem.rotation, prevItem.imageUrl, prevItem.modelUrl, prevItem.info);
         }
     };
 
@@ -307,7 +312,7 @@ const modelsConfig = useMemo(
     const moveToItem = (index) => {
         if (index < items.length) {
             const item = items[index];
-            handlePictureClick(item.position, item.rotation, item.imageUrl, null, item.info, item.video);
+            handlePictureClick(item.position, item.rotation, item.imageUrl, item.modelUrl, item.info, item.video);
             setTourIndex(index);
             // setTourPopupOpen(true); 
         } else {
@@ -626,6 +631,27 @@ const modelsConfig = useMemo(
                                 {/* Môi trường */}
 
                                 {/* item */}
+
+                                {/* item */}
+                                {items.map(item => (
+                                    <PictureFrame
+                                        key={item.id}
+                                        position={item.position}
+                                        rotation={item.rotation}
+                                        scale={item.scale}
+                                        imageUrl={item.imageUrl}
+                                        modelUrl={item.modelUrl}
+                                        info={item.info}
+                                        video={item.video}
+                                        type={item.type}
+                                        onClick={(position, rotation) => handlePictureClick(position, rotation, item.imageUrl, item.modelUrl, item.info, item.video)}
+                                        onDetailClick={handleDetailClick}
+                                        showDetailsPrompt={showDetailsPrompt} // Pass showDetailsPrompt state
+                                        setShowDetailsPrompt={setShowDetailsPrompt} // Pass setShowDetailsPrompt function
+                                        tourPopupOpen={tourPopupOpen && tourIndex === items.indexOf(item)} // Show tour popup when in tour and at the current item
+                                    />
+                                ))}
+                                {/* <Minimap items={items} handlePictureClick={handlePictureClick} /> */}
                                 
                                 {/* item */}
 
@@ -763,7 +789,7 @@ const modelsConfig = useMemo(
                         onClose={handleClosePopup} 
                         imageUrl={selectedImageUrl} 
                         info={selectedInfo} 
-                        model={selectedModel} 
+                        modelUrl={selectedModel} 
                         video={selectedVideo} 
                         onAudioEnded={handleAudioEnded} 
                         tourActive={tourActive} 

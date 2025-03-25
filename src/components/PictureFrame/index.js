@@ -1,13 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
-import "./PictureFrame.css";
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Html } from '@react-three/drei';
+import "./PictureFrame.css";
 
-function PictureFrame({ position, rotation, scale, imageUrl, onClick, info = { artist: '', title: '', year: '' }, onDetailClick, showDetailsPrompt, setShowDetailsPrompt, tourPopupOpen, video }) {
+function PictureFrame({ position, rotation, scale, imageUrl, modelUrl, onClick, info = { artist: '', title: '', year: '' }, onDetailClick, showDetailsPrompt, setShowDetailsPrompt, tourPopupOpen, video, type }) {
     const texture = useLoader(THREE.TextureLoader, imageUrl);
+    const model = useLoader(GLTFLoader, modelUrl);
     const ref = useRef();
-    const borderRef = useRef();
     const [hovered, setHovered] = useState(false);
     const [clicked, setClicked] = useState(false);
 
@@ -16,9 +17,6 @@ function PictureFrame({ position, rotation, scale, imageUrl, onClick, info = { a
             const { width, height } = texture.image;
             const aspectRatio = width / height;
             ref.current.scale.set(aspectRatio * scale, scale, 1); // Set scale
-            if (borderRef.current) {
-                borderRef.current.scale.set(aspectRatio * scale + 0.1, scale + 0.1, 0.1); // Slightly larger for border
-            }
         }
     }, [texture, scale]);
 
@@ -52,7 +50,7 @@ function PictureFrame({ position, rotation, scale, imageUrl, onClick, info = { a
         e.stopPropagation();
         setClicked(false);
         if (onDetailClick) {
-            onDetailClick(imageUrl, info, video);
+            onDetailClick(imageUrl, info, video, model);
         }
     };
 
@@ -62,6 +60,9 @@ function PictureFrame({ position, rotation, scale, imageUrl, onClick, info = { a
         }
     }, [tourPopupOpen]);
 
+    // Clone model to prevent changes in other instances
+    const cloneModel = model ? model.scene.clone() : null;
+
     return (
         <group
             position={position}
@@ -70,19 +71,24 @@ function PictureFrame({ position, rotation, scale, imageUrl, onClick, info = { a
             onPointerOut={handlePointerOut}
             onClick={handleClick}
         >
-            <mesh ref={borderRef} position={[0, 0, -0.08]}>
-                <boxGeometry args={[1.02, 1.02, 1]} />
-                <meshBasicMaterial color="black" />
-            </mesh>
-            <mesh ref={ref}>
-                <planeGeometry args={[1, 1]} />
-                <meshBasicMaterial map={texture} />
-            </mesh>
+            {/* Render for image */}
+            {type === 'image' ? (
+                <mesh ref={ref}>
+                    <planeGeometry args={[1, 1]} />
+                    <meshBasicMaterial map={texture} />
+                </mesh>
+            ) : null}
+
+            {/* Render for model */}
+            {type === 'model' && model ? (
+                <primitive object={cloneModel || model.scene} scale={[1, 1, 1]} />
+            ) : null}
+
             {(hovered || clicked || tourPopupOpen) && (
                 <Html position={[0, -1.2, 0]} center>
                     <div className="picture-info">
-                        <div className='picture-info__artist'>{info.artist}</div>
-                        <div className='picture-info__disc'>{info.title}, {info.year}</div>
+                        <div className="picture-info__artist">{info.artist}</div>
+                        <div className="picture-info__disc">{info.title}, {info.year}</div>
                         {(clicked || tourPopupOpen) && (
                             <button onClick={handleDetailClick} className="details-button">
                                 Xem chi tiết

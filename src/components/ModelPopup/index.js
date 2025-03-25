@@ -5,7 +5,9 @@ import { OrbitControls } from '@react-three/drei';
 import PictureFrame from '../../components/PictureFrame';
 import "./ModelPopUp.css";
 
-const ModelPopup = ({ open, onClose, imageUrl, info, model, video, onAudioEnded, tourActive }) => {
+const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, onAudioEnded, tourActive }) => {
+    console.log('ModelPopup', modelUrl);
+    
     const audioRef = useRef(null);
 
     useEffect(() => {
@@ -37,14 +39,12 @@ const ModelPopup = ({ open, onClose, imageUrl, info, model, video, onAudioEnded,
                             rotation={[0, 0, 0]}
                             scale={3}
                             imageUrl={imageUrl}
+                            modelUrl={"/Farm/Model_baotang_full_19-3/model_anh_treo/img_01.glb"}
                             info={info}
                             onClick={() => {}}
+                            type={'image'}
                         />
-                    </Canvas>
-                ) : model ? (
-                    <Canvas style={{ height: '400px' }}>
-                        <ambientLight intensity={1} />
-                        <primitive object={model} scale={[2, 2, 2]} />
+                        <OrbitControls />
                     </Canvas>
                 ) : (
                     <div>No model available</div>

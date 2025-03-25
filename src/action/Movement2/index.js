@@ -301,7 +301,7 @@ const Movement2 = ({ cameraPosition, cameraRotation, clicked, freeExploration })
         camera.position.z = THREE.MathUtils.clamp(camera.position.z, -15, 15);
 
         // In tọa độ người dùng
-        console.log('Current Position:', camera.position);
+        // console.log('Current Position:', camera.position);
     });
 
     return null;
