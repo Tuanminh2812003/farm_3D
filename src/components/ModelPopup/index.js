@@ -45,7 +45,7 @@ const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, onAudioEnd
                         <ambientLight intensity={1} />
                         <PictureFrame
                             position={[0, 0, 0]}
-                            rotation={[0, 0, 0]}
+                            rotation={[0, 90, 0]}
                             scale={3}
                             imageUrl={imageUrl}
                             modelUrl={modelUrl}

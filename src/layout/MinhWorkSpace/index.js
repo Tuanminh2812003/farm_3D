@@ -56,15 +56,15 @@ function Home2(){
 const modelsConfig = useMemo(
     () => [
         {
-            path: "/Farm/Model_baotang_full_19-3/BaoTang_2_main_bake_clean_map.glb",
+            path: "/Farm/Model_baotang_full_19-3/a_map_main_fix.glb",
             position: [0, 0, 0],
             rotation: [0, 0, 0],
             scale: [1, 1, 1],
             clickable: false,
         },
         {
-            path: "/Farm/Model_baotang_full_19-3/BaoTang_2_main_bake_clean_map.glb",
-            position: [0, 0, 0],
+            path: "/Farm/Model_baotang_full_19-3/model_anh_treo/anh_chuong_1.glb",
+            position: [26.3021, 2.9647, -0.041822],
             rotation: [0, 0, 0],
             scale: [1, 1, 1],
             clickable: false,
@@ -167,7 +167,7 @@ const modelsConfig = useMemo(
         console.log("handlePictureClick called with info:", info);
         console.log("handlePictureClick called with video", video);
         
-        const direction = new Vector3(0, 0, 22);
+        const direction = new Vector3(4, 0, 0);
         const eulerRotation = new Euler(
             rotation[0] * (Math.PI / 180),
             rotation[1] * (Math.PI / 180),
@@ -183,7 +183,7 @@ const modelsConfig = useMemo(
         
         const newCameraRotation = [
             rotation[0],
-            rotation[1],
+            rotation[1]+90,
             rotation[2]
         ];
         
@@ -500,7 +500,7 @@ const modelsConfig = useMemo(
         if (mode === 'free') {
             startFreeExploration();
         } else if (mode === 'tour') {
-            handleStartVideo();
+            startTour();
         } else if (mode === 'update') {
             setPopUpUpdate(true);
         }
@@ -703,7 +703,7 @@ const modelsConfig = useMemo(
                                         {navToggle ? (
                                             <div className='sidebarDisc'>
                                                 <div className='sidebarDisc__button' onClick={handleFullscreenToggle}>
-                                                    <div className='sidebarDisc__button__text'>Enter fullscreen</div>
+                                                    <div className='sidebarDisc__button__text'>Toàn màn hình</div>
                                                     {!isFullscreen ? (
                                                         <button className={`fullscreen_button`}><MdOutlineZoomOutMap /></button>
                                                     ) : (
@@ -711,20 +711,16 @@ const modelsConfig = useMemo(
                                                     )}
                                                 </div>
                                                 <div className='sidebarDisc__button' onClick={handleOpenInstructions}>
-                                                    <div className='sidebarDisc__button__text'>How to move</div>
+                                                    <div className='sidebarDisc__button__text'>Hướng dẫn</div>
                                                     <div className='sidebarDisc__button__btn'><RiDragMoveFill /></div>
                                                 </div>
                                                 <div className='sidebarDisc__button' onClick={startTour}>
-                                                    <div className='sidebarDisc__button__text'>Start tour</div>
+                                                    <div className='sidebarDisc__button__text'>Bắt đầu tour</div>
                                                     <div className='sidebarDisc__button__btn'><SiAwesomelists /></div>
                                                 </div>
                                                 <div className='sidebarDisc__button' onClick={handleOpenPopUpListModel}>
-                                                    <div className='sidebarDisc__button__text'>List model</div>
+                                                    <div className='sidebarDisc__button__text'>Danh sách trưng bày</div>
                                                     <div className='sidebarDisc__button__btn'><PiListStarFill /></div>
-                                                </div>
-                                                <div className='sidebarDisc__button' onClick={handleOpenPopUpAboutTheExhibition}>
-                                                    <div className='sidebarDisc__button__text'>About the Exhibition</div>
-                                                    <div className='sidebarDisc__button__btn'><BsNewspaper /></div>
                                                 </div>
                                             </div>
                                         ) : (

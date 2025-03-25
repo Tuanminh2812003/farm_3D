@@ -81,14 +81,14 @@ function PictureFrame({ position, rotation, scale, imageUrl, modelUrl, onClick, 
 
             {/* Render for model */}
             {type === 'model' && model ? (
-                <primitive object={cloneModel || model.scene} scale={[1, 1, 1]} />
+                <primitive object={cloneModel || model.scene} scale={[scale, scale, scale]} />
             ) : null}
 
             {(hovered || clicked || tourPopupOpen) && (
                 <Html position={[0, -1.2, 0]} center>
                     <div className="picture-info">
                         <div className="picture-info__artist">{info.artist}</div>
-                        <div className="picture-info__disc">{info.title}, {info.year}</div>
+                        <div className="picture-info__disc">{info.title} - {info.year}</div>
                         {(clicked || tourPopupOpen) && (
                             <button onClick={handleDetailClick} className="details-button">
                                 Xem chi tiết

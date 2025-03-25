@@ -37,7 +37,7 @@ const PopUpHowToMove = ({ open, handleClose }) => {
                 >
                     <div style={{ 
                         position: 'absolute',
-                        backgroundColor: '#2E2E2E',
+                        backgroundColor: '#E6E1D9',
                         top: '0',
                         left: '0',
                         width: '100%',
@@ -47,21 +47,27 @@ const PopUpHowToMove = ({ open, handleClose }) => {
                     }}>
 
                     </div>
-                    <div className='popUpMove__content1' style={{ marginBottom: '40px', position: 'relative' }}>
-                        <img src='/NTST/HDSD1.png' className='popUpMove__content__content__inner__img'/>
+                    <div className='popUpMove__content0' style={{ marginBottom: '40px', position: 'relative' }}>
+                        <img src='/NTST/HDSD0.png' className='popUpMove__content__content__inner__img'/>
                     </div>
-                    <div className='popUpMove__content2' style={{ marginBottom: '40px', position: 'relative' }}>
-                        <img src='/NTST/HDSD2.png' className='popUpMove__content__content__inner__img'/>
+                    <div className='popUpMove__content__inner'>
+                        <div className='popUpMove__content1' style={{ marginBottom: '32px', position: 'relative' }}>
+                            <img src='/NTST/HDSD1.png' className='popUpMove__content__content__inner__img'/>
+                        </div>
+                        <div className='popUpMove__content3' style={{  position: 'relative' }}>
+                            <img src='/NTST/HDSD3.png' className='popUpMove__content__content__inner__img'/>
+                        </div>
                     </div>
-                    <div className='popUpMove__content3' style={{ marginBottom: '40px', position: 'relative' }}>
-                        <img src='/NTST/HDSD3.png' className='popUpMove__content__content__inner__img'/>
-                    </div>
-                    <div className='popUpMove__content4' style={{ marginBottom: '40px', position: 'relative' }}>
+                    <div className='popUpMove__content__inner'>
+                        <div className='popUpMove__content2' style={{ marginBottom: '32px', position: 'relative' }}>
+                            <img src='/NTST/HDSD2.png' className='popUpMove__content__content__inner__img'/>
+                        </div>
+                        <div className='popUpMove__content4' style={{ position: 'relative' }}>
                         <Button
                             onClick={() => handleClose('tour')} 
                             className='button1'
                         >
-                            GUIDE TOUR
+                            Bắt đầu tour
                         </Button>
                         <Button 
                             onClick={() => handleClose('free')} 
@@ -70,6 +76,9 @@ const PopUpHowToMove = ({ open, handleClose }) => {
                             BẮT ĐẦU TRẢI NGHIỆM
                         </Button>
                     </div>
+                    </div>
+                    
+                    
                 </div>
             </Box>
         </Modal>
