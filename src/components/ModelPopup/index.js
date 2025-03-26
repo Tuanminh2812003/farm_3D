@@ -38,7 +38,7 @@ const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, onAudioEnd
 
     return (
         <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
-            <DialogTitle>Thông tin sản phẩm</DialogTitle>
+            <DialogTitle>Thông tin tác phẩm</DialogTitle>
             <DialogContent className='dialogContent'>
                 {imageUrl ? (
                     <Canvas style={{ height: '400px' }}>
