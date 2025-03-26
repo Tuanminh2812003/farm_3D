@@ -297,7 +297,7 @@ const Movement2 = ({ cameraPosition, cameraRotation, clicked, freeExploration })
         camera.rotation.set(0, yaw.current, 0);
         setYaw(camera.rotation.y);
 
-        camera.position.x = THREE.MathUtils.clamp(camera.position.x, -20, 25);
+        camera.position.x = THREE.MathUtils.clamp(camera.position.x, -22, 28);
         camera.position.z = THREE.MathUtils.clamp(camera.position.z, -15, 15);
 
         // In tọa độ người dùng

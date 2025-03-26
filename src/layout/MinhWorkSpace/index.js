@@ -64,9 +64,9 @@ const modelsConfig = useMemo(
         },
         {
             path: "/Farm/Model_baotang_full_19-3/model_anh_treo/anh_chuong_1.glb",
-            position: [26.3021, 2.9647, -0.041822],
+            position: [0,0,0],
             rotation: [0, 0, 0],
-            scale: [1, 1, 1],
+            scale: [2, 2, 2],
             clickable: false,
         },
         

@@ -85,7 +85,7 @@ function PictureFrame({ position, rotation, scale, imageUrl, modelUrl, onClick, 
             ) : null}
 
             {(hovered || clicked || tourPopupOpen) && (
-                <Html position={[0, -1.2, 0]} center>
+                <Html position={[0, -2, 0]} center>
                     <div className="picture-info">
                         <div className="picture-info__artist">{info.artist}</div>
                         <div className="picture-info__disc">{info.title} - {info.year}</div>

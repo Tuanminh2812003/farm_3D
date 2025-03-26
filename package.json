@@ -31,6 +31,7 @@
     "reactstrap": "^9.2.2",
     "sass": "^1.77.4",
     "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.16",
     "video-react": "^0.16.0",
     "virtual-gallery": "file:",
     "web-vitals": "^2.1.4"

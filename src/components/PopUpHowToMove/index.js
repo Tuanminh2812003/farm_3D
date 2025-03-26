@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from '@mui/material/Modal';
 import { Box, Button } from '@mui/material';
 import "./PopUpHowToMove.css";
+import ButtonVR from '../ButtonVR';
 
 const PopUpHowToMove = ({ open, handleClose }) => {
     return (
@@ -67,7 +68,7 @@ const PopUpHowToMove = ({ open, handleClose }) => {
                             onClick={() => handleClose('tour')} 
                             className='button1'
                         >
-                            Bắt đầu tour
+                            BẮT ĐẦU TOUR
                         </Button>
                         <Button 
                             onClick={() => handleClose('free')} 
@@ -75,9 +76,12 @@ const PopUpHowToMove = ({ open, handleClose }) => {
                         >
                             BẮT ĐẦU TRẢI NGHIỆM
                         </Button>
+                        
                     </div>
                     </div>
-                    
+                    <div className='popUpMove__content5'>
+                        <ButtonVR />
+                    </div>
                     
                 </div>
             </Box>
