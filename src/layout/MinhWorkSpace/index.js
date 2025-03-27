@@ -416,18 +416,19 @@ const modelsConfig = useMemo(
     // giao diện và respondsive
     // Chặn cuộn trang trên thiết bị di động
     useEffect(() => {
-            const disableScroll = (e) => {
-                if (!showHowToMove) {
-                    e.preventDefault();
-                }
-            };
-        
-            window.addEventListener('touchmove', disableScroll, { passive: false });
-        
-            return () => {
-                window.removeEventListener('touchmove', disableScroll);
-            };
-        }, [showHowToMove]); // 🔥 Chỉ chặn khi modal không mở
+        const disableScroll = (e) => {
+            // Chỉ chặn cuộn khi không có popup nào đang mở và không hiển thị hướng dẫn
+            if (!showHowToMove && !popupOpen) {
+                e.preventDefault();
+            }
+        };
+    
+        window.addEventListener('touchmove', disableScroll, { passive: false });
+    
+        return () => {
+            window.removeEventListener('touchmove', disableScroll);
+        };
+    }, [showHowToMove, popupOpen]);
     useEffect(() => {
         const handleFullscreenChange = () => {
             setIsFullscreen(!!document.fullscreenElement);
