@@ -416,17 +416,6 @@ const modelsConfig = useMemo(
     // giao diện và respondsive
     // Chặn cuộn trang trên thiết bị di động
     useEffect(() => {
-        const disableScroll = (e) => {
-            e.preventDefault();
-        };
-
-        window.addEventListener('touchmove', disableScroll, { passive: false });
-
-        return () => {
-            window.removeEventListener('touchmove', disableScroll);
-        };
-    }, []);
-    useEffect(() => {
         const handleFullscreenChange = () => {
             setIsFullscreen(!!document.fullscreenElement);
         };
