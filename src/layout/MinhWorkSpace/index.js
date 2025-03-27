@@ -416,6 +416,19 @@ const modelsConfig = useMemo(
     // giao diện và respondsive
     // Chặn cuộn trang trên thiết bị di động
     useEffect(() => {
+            const disableScroll = (e) => {
+                if (!showHowToMove) {
+                    e.preventDefault();
+                }
+            };
+        
+            window.addEventListener('touchmove', disableScroll, { passive: false });
+        
+            return () => {
+                window.removeEventListener('touchmove', disableScroll);
+            };
+        }, [showHowToMove]); // 🔥 Chỉ chặn khi modal không mở
+    useEffect(() => {
         const handleFullscreenChange = () => {
             setIsFullscreen(!!document.fullscreenElement);
         };
