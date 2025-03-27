@@ -67,7 +67,7 @@ const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, imageInfo,
                 {selectedHotspot && (
                     <div className="image-default">
                         <div className='image-default__inner' dangerouslySetInnerHTML={{ __html: selectedHotspot.description }} />
-                        <div className='image-default__inner__button' onClick={() => setSelectedHotspot(null)}>
+                        <div style={{marginTop:"24px"}} className='image-default__inner__button' onClick={() => setSelectedHotspot(null)}>
                             Xem thông tin tác giả
                         </div>
                     </div>

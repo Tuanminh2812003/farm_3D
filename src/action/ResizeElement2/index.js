@@ -37,7 +37,7 @@ const ResizeHandler = ({ updateItemsForScreenSize }) => {
                                 id: 'head3',
                                 position: [0, -0.8, -2],
                                 title: 'Mắt',
-                                description: '<iframe style={{margin:"12px"}} width="100%" height="500px" src="https://www.youtube.com/embed/g8U7aIF-lAA?si=ovcSeRPan8gDwVsS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                                description: '<iframe style={{margin:"12px"}} width="100%" height="500px" src="https://www.youtube.com/embed/4RwogJ5bHaA?si=u3h5jLu5x0zVgjeC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
                               }
                         ]
                         // video: "/assets/Audio/voice1.mp3"
@@ -64,7 +64,7 @@ const ResizeHandler = ({ updateItemsForScreenSize }) => {
                               id: 'head4',
                               position: [0, 0, -0.5],
                               title: 'Mắt',
-                              description: '<iframe style={{margin:"12px"}} width="100%" height="500px" src="https://www.youtube.com/embed/g8U7aIF-lAA?si=ovcSeRPan8gDwVsS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                              description: '<iframe style={{margin:"12px"}} width="100%" height="500px" src="https://www.youtube.com/embed/0Z54HE1jl60?si=H7hCYKtPAHv_IXHt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
 
                             }
                         ]
@@ -92,7 +92,7 @@ const ResizeHandler = ({ updateItemsForScreenSize }) => {
                                 id: 'head1',
                                 position: [0, 0, 0],
                                 title: 'Đầu',
-                                description: '<iframe style={{margin:"12px"}} width="100%" height="500px" src="https://www.youtube.com/embed/g8U7aIF-lAA?si=ovcSeRPan8gDwVsS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                                description: '<iframe style={{margin:"12px"}} width="100%" height="500px" src="https://www.youtube.com/embed/XumZzxGSlTU?si=bvv2hdxAIGcYcfSs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
 
                             },
                             // {
@@ -126,7 +126,7 @@ const ResizeHandler = ({ updateItemsForScreenSize }) => {
                                 id: 'head1',
                                 position: [0, -0.4, 0.5],
                                 title: 'Đầu',
-                                description: '<iframe style={{margin:"12px"}} width="100%" height="500px" src="https://www.youtube.com/embed/g8U7aIF-lAA?si=ovcSeRPan8gDwVsS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                                description: '<iframe style={{margin:"12px"}} width="100%" height="500px" src="https://www.youtube.com/embed/Rqwci6vR0Zg?si=hn9KLtCunqbi6Flv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
 
                             },
                             // {
