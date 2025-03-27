@@ -39,7 +39,7 @@ const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, imageInfo,
     return (
         <Dialog open={open} onClose={onClose} maxWidth="xl" fullWidth>
             <DialogTitle>Thông tin tác phẩm</DialogTitle>
-            <DialogContent className='dialogContent'>
+            <div className='dialogContent'>
                 {imageUrl ? (
                     <Canvas className='canvas'>
                         <ambientLight intensity={1} />
@@ -62,7 +62,7 @@ const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, imageInfo,
                     <audio ref={audioRef} controls src={video} autoPlay></audio>
                 )}
                 <img src={imageInfo}/>
-            </DialogContent>
+            </div>
             <DialogActions>
                 <Button onClick={onClose} color="primary">Close</Button>
             </DialogActions>
