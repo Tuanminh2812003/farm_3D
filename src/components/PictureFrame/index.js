@@ -5,15 +5,13 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Html } from '@react-three/drei';
 import "./PictureFrame.css";
 
-function PictureFrame({ position, rotation, scale, imageUrl, modelUrl, onClick, info = { artist: '', title: '', year: '' }, onDetailClick, showDetailsPrompt, setShowDetailsPrompt, tourPopupOpen, video, type, hover }) {
+function PictureFrame({ position, rotation, scale, imageUrl, modelUrl, onClick, info = { artist: '', title: '', year: '' }, onDetailClick, showDetailsPrompt, setShowDetailsPrompt, tourPopupOpen, video, type, hover, hotspots, onHotspotClick, }) {
     const texture = useLoader(THREE.TextureLoader, imageUrl);
     const model = useLoader(GLTFLoader, modelUrl);
     const ref = useRef();
     const [hovered, setHovered] = useState(false);
     const [clicked, setClicked] = useState(false);
     const isHover = hover;
-
-    console.log('isHover', isHover);
 
     useEffect(() => {
         if (ref.current) {
@@ -117,9 +115,27 @@ function PictureFrame({ position, rotation, scale, imageUrl, modelUrl, onClick, 
             ) : null}
 
             {/* Render for model */}
-            {type === 'model' && model ? (
+            {type === 'model' && model && (
+            <group>
                 <primitive object={cloneModel || model.scene} scale={[scale, scale, scale]} />
-            ) : null}
+
+                {hotspots.map((hotspot) => (
+                <mesh
+                    key={hotspot.id}
+                    position={hotspot.position}
+                    onClick={(e) => {
+                    e.stopPropagation();
+                    if (typeof onHotspotClick === 'function') {
+                        onHotspotClick(hotspot); // Gửi dữ liệu hotspot về cha
+                    }
+                    }}
+                >
+                    <sphereGeometry args={[0.1, 16, 16]} />
+                    <meshBasicMaterial color="blue" />
+                </mesh>
+                ))}
+            </group>
+            )}
 
             {(hovered || clicked || tourPopupOpen) && (
                 <Html position={[0, -2, 0]} center>

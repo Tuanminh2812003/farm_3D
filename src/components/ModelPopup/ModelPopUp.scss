@@ -2,38 +2,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 24px;
+    width: 100% !important;
+    flex-direction: column;
+    canvas{
+      width: 100%;
+      height: 50vh;
+    }
 }
 
-@media (orientation: portrait) {
-    .dialogContent {
-      flex-direction: column;
+.image-default{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
-      canvas{
-        height: 50vh;
-        width: 100%;
-      }
+  &__inner{
+    width: 100%;
+    display: flex;
+    align-items: center;
 
-      img{
-        width: 100%;
-        height: auto;
-      }
-    }
-
-  }
-  
-
-  @media (orientation: landscape) {
-    .dialogContent {
-      flex-direction: row;
-
-      canvas{
-        height: 70vh;
-        width: 35%;
-      }
-
-      img{
-        width: 65%;
-        height: auto;
-      }
+    &__button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: 100px;
+      background-color: #DC9B49;
+      color: white;
+      cursor: pointer;
     }
   }
+}

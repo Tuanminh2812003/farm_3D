@@ -19,7 +19,27 @@ const ResizeHandler = ({ updateItemsForScreenSize }) => {
                         info: { artist: 'LỄ HỘI KHMER Ở CÀ MAU', title: 'Lại Lâm Tùng', year: `Giải xuất sắc` },
                         type: 'model',
                         video: "https://www.youtube.com/embed/ayLxUY9Jsh0?si=9KfHPhR6XZRtK7g4",
-                        imageInfo: "/Farm/Image/27.jpg"
+                        imageInfo: "/Farm/Image/27.jpg",
+                        hotspots: [
+                            {
+                              id: 'head1',
+                              position: [0, 1, 1.1],
+                              title: 'Đầu',
+                              description: '<img src="/Farm/Image/bonus/bonus1_1.png"/>',
+                            },
+                            {
+                              id: 'head2',
+                              position: [0, -0.7, -1.2],
+                              title: 'Mắt',
+                              description: '<img src="/Farm/Image/bonus/bonus1_2.png"/>',
+                            },
+                            {
+                                id: 'head3',
+                                position: [0, -0.8, -2],
+                                title: 'Mắt',
+                                description: '<iframe style={{margin:"12px"}} width="100%" height="500px" src="https://www.youtube.com/embed/g8U7aIF-lAA?si=ovcSeRPan8gDwVsS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                              }
+                        ]
                         // video: "/assets/Audio/voice1.mp3"
                     },
                     {
@@ -32,7 +52,22 @@ const ResizeHandler = ({ updateItemsForScreenSize }) => {
                         info: { artist: 'NGHÌN XƯA LƯU DẤU', title: 'Lê Thị Thanh', year: `Giải nhất` },
                         type: 'model',
                         video: "https://www.youtube.com/embed/ayLxUY9Jsh0?si=9KfHPhR6XZRtK7g4",
-                        imageInfo: "/Farm/Image/2.jpg"
+                        imageInfo: "/Farm/Image/2.jpg",
+                        hotspots: [
+                            {
+                              id: 'head3',
+                              position: [0, 0, 0.5],
+                              title: 'Đầu',
+                              description: '<div>Nó như này này</div>',
+                            },
+                            {
+                              id: 'head4',
+                              position: [0, 0, -0.5],
+                              title: 'Mắt',
+                              description: '<iframe style={{margin:"12px"}} width="100%" height="500px" src="https://www.youtube.com/embed/g8U7aIF-lAA?si=ovcSeRPan8gDwVsS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+
+                            }
+                        ]
                         // video: "/assets/Audio/voice1.mp3"
                     },
                     {
@@ -45,7 +80,28 @@ const ResizeHandler = ({ updateItemsForScreenSize }) => {
                         info: { artist: 'HIẾU LĂNG MỘT CHIỀU THU', title: 'Trần Thị Thanh Dung', year: `Giải nhì` },
                         type: 'model',
                         video: "https://www.youtube.com/embed/ayLxUY9Jsh0?si=9KfHPhR6XZRtK7g4",
-                        imageInfo: "/Farm/Image/3.jpg"
+                        imageInfo: "/Farm/Image/3.jpg",
+                        hotspots: [
+                            {
+                                id: 'head1',
+                                position: [0, 1, 0],
+                                title: 'Đầu',
+                                description: '<img src="/Farm/Image/bonus/bonus3_1.png"/>',
+                            },
+                            {
+                                id: 'head1',
+                                position: [0, 0, 0],
+                                title: 'Đầu',
+                                description: '<iframe style={{margin:"12px"}} width="100%" height="500px" src="https://www.youtube.com/embed/g8U7aIF-lAA?si=ovcSeRPan8gDwVsS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+
+                            },
+                            // {
+                            //     id: 'head2',
+                            //     position: [0, -0.7, -1.2],
+                            //     title: 'Mắt',
+                            //     description: '<img src="/Farm/Image/bonus/bonus1_2.png"/>',
+                            // }
+                        ]
                         // video: "/assets/Audio/voice1.mp3"
                     },
                     {
@@ -58,7 +114,28 @@ const ResizeHandler = ({ updateItemsForScreenSize }) => {
                         info: { artist: 'CHÙA HANG ĐẢO LÝ SƠN', title: 'Lê Phi Hùng', year: 'Giải nhì' },
                         type: 'model',
                         video: "https://www.youtube.com/embed/ayLxUY9Jsh0?si=9KfHPhR6XZRtK7g4",
-                        imageInfo: "/Farm/Image/4.jpg"
+                        imageInfo: "/Farm/Image/4.jpg",
+                        hotspots: [
+                            {
+                                id: 'head1',
+                                position: [0, -0.4, -1],
+                                title: 'Đầu',
+                                description: '<img src="/Farm/Image/bonus/bonus4_1.png"/>',
+                            },
+                            {
+                                id: 'head1',
+                                position: [0, -0.4, 0.5],
+                                title: 'Đầu',
+                                description: '<iframe style={{margin:"12px"}} width="100%" height="500px" src="https://www.youtube.com/embed/g8U7aIF-lAA?si=ovcSeRPan8gDwVsS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+
+                            },
+                            // {
+                            //     id: 'head2',
+                            //     position: [0, -0.7, -1.2],
+                            //     title: 'Mắt',
+                            //     description: '<img src="/Farm/Image/bonus/bonus1_2.png"/>',
+                            // }
+                        ]
                         // video: "/assets/Audio/voice1.mp3"
                     },
                     {

@@ -116,6 +116,7 @@ const modelsConfig = useMemo(
     const [selectedInfo, setSelectedInfo] = useState(null); 
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [selectedImageInfo, setSelectedImageInfo] = useState(null);
+    const [selectedHotspots, setselectedHotspots] = useState(null);
     const [currentItemIndex, setCurrentItemIndex] = useState(0);
     const [cameraPosition, setCameraPosition] = useState(new Vector3(12, 1.6, 0));
     const [cameraRotation, setCameraRotation] = useState(new Euler(0, 1/2 * Math.PI, 0));
@@ -160,13 +161,14 @@ const modelsConfig = useMemo(
     // move
 
     // click và các chức năng liên quan
-    const handlePictureClick = useCallback((position, rotation, imageUrl, modelUrl, info, video, imageInfo) => {
+    const handlePictureClick = useCallback((position, rotation, imageUrl, modelUrl, info, video, imageInfo, hotspots) => {
         console.log("handlePictureClick called with position:", position);
         console.log("handlePictureClick called with rotation:", rotation);
         console.log("handlePictureClick called with imageUrl:", imageUrl);
         console.log("handlePictureClick called with model:", modelUrl);
         console.log("handlePictureClick called with info:", info);
         console.log("handlePictureClick called with video", video);
+        console.log("handlePictureClick called with hotspots", hotspots);
         
         const direction = new Vector3(4, 0, 0);
         const eulerRotation = new Euler(
@@ -195,6 +197,7 @@ const modelsConfig = useMemo(
         setSelectedInfo(info);
         setSelectedVideo(video);
         setSelectedImageInfo(imageInfo);
+        setselectedHotspots(hotspots);
         setClicked(true);
         setShowDetailsPrompt(true); // Hiển thị chi tiết prompt
         clearTimeout(promptTimeout); // Xóa timeout hiện tại nếu có
@@ -635,7 +638,6 @@ const modelsConfig = useMemo(
                                     
                                 /> */}
                                 
-                                <ambientLight intensity={2.5} />
 
                                 {/* Chiếu sáng các model cụ thể */}
                                 
@@ -656,7 +658,7 @@ const modelsConfig = useMemo(
                                         video={item.video}
                                         type={item.type}
                                         imageInfo={item.imageInfo}
-                                        onClick={(position, rotation) => handlePictureClick(position, rotation, item.imageUrl, item.modelUrl, item.info, item.video, item.imageInfo)}
+                                        onClick={(position, rotation) => handlePictureClick(position, rotation, item.imageUrl, item.modelUrl, item.info, item.video, item.imageInfo, item.hotspots)}
                                         onDetailClick={handleDetailClick}
                                         showDetailsPrompt={showDetailsPrompt} // Pass showDetailsPrompt state
                                         setShowDetailsPrompt={setShowDetailsPrompt} // Pass setShowDetailsPrompt function
@@ -791,6 +793,7 @@ const modelsConfig = useMemo(
                         modelUrl={selectedModel} 
                         video={selectedVideo} 
                         imageInfo={selectedImageInfo}
+                        hotspots={selectedHotspots}
                         onAudioEnded={handleAudioEnded} 
                         tourActive={tourActive} 
                         
