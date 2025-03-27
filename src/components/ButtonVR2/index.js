@@ -3,14 +3,12 @@ import styled from 'styled-components';
 
 const Button = () => {
   return (
-    <a  href='https://vrtest-nine.vercel.app/'>
       <StyledWrapper>
         <div>
-          <button className="btn"><i className="animation" />THỰC TẠI ẢO<i className="animation" />
+          <button className="btn"><i className="animation" />BẮT ĐẦU TRẢI NGHIỆM<i className="animation" />
           </button>
         </div>
       </StyledWrapper>
-    </a>
   );
 }
 
@@ -34,6 +32,7 @@ const StyledWrapper = styled.div`
     text-transform: uppercase;
     overflow: hidden;
     cursor: pointer;
+    margin-top: 20px;
   }
 
   .btn:hover {

@@ -5,12 +5,15 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Html } from '@react-three/drei';
 import "./PictureFrame.css";
 
-function PictureFrame({ position, rotation, scale, imageUrl, modelUrl, onClick, info = { artist: '', title: '', year: '' }, onDetailClick, showDetailsPrompt, setShowDetailsPrompt, tourPopupOpen, video, type }) {
+function PictureFrame({ position, rotation, scale, imageUrl, modelUrl, onClick, info = { artist: '', title: '', year: '' }, onDetailClick, showDetailsPrompt, setShowDetailsPrompt, tourPopupOpen, video, type, hover }) {
     const texture = useLoader(THREE.TextureLoader, imageUrl);
     const model = useLoader(GLTFLoader, modelUrl);
     const ref = useRef();
     const [hovered, setHovered] = useState(false);
     const [clicked, setClicked] = useState(false);
+    const isHover = hover;
+
+    console.log('isHover', isHover);
 
     useEffect(() => {
         if (ref.current) {
@@ -64,12 +67,46 @@ function PictureFrame({ position, rotation, scale, imageUrl, modelUrl, onClick, 
     const cloneModel = model ? model.scene.clone() : null;
 
     return (
-        <group
+        <>
+            {isHover === "1" ? (
+                <group
+                position={position}
+                rotation={rotation.map(r => r * (Math.PI / 180))}
+                onPointerOver={handlePointerOver}
+                onPointerOut={handlePointerOut}
+                onClick={handleClick}
+            >
+                {/* Render for image */}
+                {type === 'image' ? (
+                    <mesh ref={ref}>
+                        <planeGeometry args={[1, 1]} />
+                        <meshBasicMaterial map={texture} />
+                    </mesh>
+                ) : null}
+    
+                {/* Render for model */}
+                {type === 'model' && model ? (
+                    <primitive object={cloneModel || model.scene} scale={[scale, scale, scale]} />
+                ) : null}
+    
+                {(hovered || clicked || tourPopupOpen) && (
+                    <Html position={[0, -2, 0]} center>
+                        <div className="picture-info">
+                            <div className="picture-info__artist">{info.artist}</div>
+                            <div className="picture-info__disc">{info.title} - {info.year}</div>
+                            {(clicked || tourPopupOpen) && (
+                                <button onClick={handleDetailClick} className="details-button">
+                                    Xem chi tiết
+                                </button>
+                            )}
+                        </div>
+                    </Html>
+                )}
+            </group>
+            ) : (
+                <group
             position={position}
             rotation={rotation.map(r => r * (Math.PI / 180))}
-            onPointerOver={handlePointerOver}
-            onPointerOut={handlePointerOut}
-            onClick={handleClick}
         >
             {/* Render for image */}
             {type === 'image' ? (
@@ -98,6 +135,8 @@ function PictureFrame({ position, rotation, scale, imageUrl, modelUrl, onClick, 
                 </Html>
             )}
         </group>
+            )}
+        </>
     );
 }
 

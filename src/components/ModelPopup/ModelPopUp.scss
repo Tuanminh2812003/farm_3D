@@ -1,0 +1,39 @@
+.dialogContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (orientation: portrait) {
+    .dialogContent {
+      flex-direction: column;
+
+      canvas{
+        height: 50vh;
+        width: 100%;
+      }
+
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+
+  }
+  
+
+  @media (orientation: landscape) {
+    .dialogContent {
+      flex-direction: row;
+
+      canvas{
+        height: 70vh;
+        width: 35%;
+      }
+
+      img{
+        width: 65%;
+        height: auto;
+      }
+    }
+  }

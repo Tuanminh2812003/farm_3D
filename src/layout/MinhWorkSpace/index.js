@@ -115,6 +115,7 @@ const modelsConfig = useMemo(
     const [selectedModel, setSelectedModel] = useState(null);
     const [selectedInfo, setSelectedInfo] = useState(null); 
     const [selectedVideo, setSelectedVideo] = useState(null);
+    const [selectedImageInfo, setSelectedImageInfo] = useState(null);
     const [currentItemIndex, setCurrentItemIndex] = useState(0);
     const [cameraPosition, setCameraPosition] = useState(new Vector3(12, 1.6, 0));
     const [cameraRotation, setCameraRotation] = useState(new Euler(0, 1/2 * Math.PI, 0));
@@ -159,7 +160,7 @@ const modelsConfig = useMemo(
     // move
 
     // click và các chức năng liên quan
-    const handlePictureClick = useCallback((position, rotation, imageUrl, modelUrl, info, video) => {
+    const handlePictureClick = useCallback((position, rotation, imageUrl, modelUrl, info, video, imageInfo) => {
         console.log("handlePictureClick called with position:", position);
         console.log("handlePictureClick called with rotation:", rotation);
         console.log("handlePictureClick called with imageUrl:", imageUrl);
@@ -193,6 +194,7 @@ const modelsConfig = useMemo(
         setSelectedModel(modelUrl);
         setSelectedInfo(info);
         setSelectedVideo(video);
+        setSelectedImageInfo(imageInfo);
         setClicked(true);
         setShowDetailsPrompt(true); // Hiển thị chi tiết prompt
         clearTimeout(promptTimeout); // Xóa timeout hiện tại nếu có
@@ -650,11 +652,13 @@ const modelsConfig = useMemo(
                                         info={item.info}
                                         video={item.video}
                                         type={item.type}
-                                        onClick={(position, rotation) => handlePictureClick(position, rotation, item.imageUrl, item.modelUrl, item.info, item.video)}
+                                        imageInfo={item.imageInfo}
+                                        onClick={(position, rotation) => handlePictureClick(position, rotation, item.imageUrl, item.modelUrl, item.info, item.video, item.imageInfo)}
                                         onDetailClick={handleDetailClick}
                                         showDetailsPrompt={showDetailsPrompt} // Pass showDetailsPrompt state
                                         setShowDetailsPrompt={setShowDetailsPrompt} // Pass setShowDetailsPrompt function
-                                        tourPopupOpen={tourPopupOpen && tourIndex === items.indexOf(item)} // Show tour popup when in tour and at the current item
+                                        tourPopupOpen={tourPopupOpen && tourIndex === items.indexOf(item)}
+                                        hover="1"
                                     />
                                 ))}
                                 {/* <Minimap items={items} handlePictureClick={handlePictureClick} /> */}
@@ -783,8 +787,10 @@ const modelsConfig = useMemo(
                         info={selectedInfo} 
                         modelUrl={selectedModel} 
                         video={selectedVideo} 
+                        imageInfo={selectedImageInfo}
                         onAudioEnded={handleAudioEnded} 
                         tourActive={tourActive} 
+                        
                     />
                     <PopUpHowToMove open={showHowToMove} handleClose={handleCloseHowToMove} />
                     <PopUpAboutTheExhibition open={popUpAboutTheExhibition} handleClose={handleClosePopUpAboutTheExhibition} />

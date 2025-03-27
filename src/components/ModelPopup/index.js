@@ -3,9 +3,9 @@ import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import PictureFrame from '../../components/PictureFrame';
-import "./ModelPopUp.css";
+import "./ModelPopUp.scss";
 
-const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, onAudioEnded, tourActive }) => {
+const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, imageInfo, onAudioEnded, tourActive }) => {
 
 
     console.log('modelUrl:', modelUrl);
@@ -37,11 +37,11 @@ const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, onAudioEnd
     }, [tourActive]);
 
     return (
-        <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
+        <Dialog open={open} onClose={onClose} maxWidth="xl" fullWidth>
             <DialogTitle>Thông tin tác phẩm</DialogTitle>
             <DialogContent className='dialogContent'>
                 {imageUrl ? (
-                    <Canvas style={{ height: '400px' }}>
+                    <Canvas className='canvas'>
                         <ambientLight intensity={1} />
                         <PictureFrame
                             position={[0, 0, 0]}
@@ -61,6 +61,7 @@ const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, onAudioEnd
                 {video && tourActive && (
                     <audio ref={audioRef} controls src={video} autoPlay></audio>
                 )}
+                <img src={imageInfo}/>
             </DialogContent>
             <DialogActions>
                 <Button onClick={onClose} color="primary">Close</Button>
