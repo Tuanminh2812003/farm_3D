@@ -66,7 +66,7 @@ const PopUpHowToMove = ({ open, handleClose }) => {
                         </div>
                         <div className='popUpMove__content4' style={{ position: 'relative' }}>
                         <Button
-                            onClick={() => handleClose('tour')} 
+                            onClick={() => handleClose('update')} 
                             className='button1'
                             style={{ marginBottom: '0px !important' }}
                         >

@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Html } from '@react-three/drei';
 import "./PictureFrame.css";
+import HotspotSphere from './HotspotSphere';
 
 function PictureFrame({ position, rotation, scale, imageUrl, modelUrl, onClick, info = { artist: '', title: '', year: '' }, onDetailClick, showDetailsPrompt, setShowDetailsPrompt, tourPopupOpen, video, type, hover, hotspots, onHotspotClick, }) {
     const texture = useLoader(THREE.TextureLoader, imageUrl);
@@ -120,19 +121,16 @@ function PictureFrame({ position, rotation, scale, imageUrl, modelUrl, onClick, 
                 <primitive object={cloneModel || model.scene} scale={[scale, scale, scale]} />
 
                 {hotspots.map((hotspot) => (
-                <mesh
-                    key={hotspot.id}
-                    position={hotspot.position}
-                    onClick={(e) => {
-                    e.stopPropagation();
-                    if (typeof onHotspotClick === 'function') {
-                        onHotspotClick(hotspot); // Gửi dữ liệu hotspot về cha
-                    }
-                    }}
-                >
-                    <sphereGeometry args={[0.1, 16, 16]} />
-                    <meshBasicMaterial color="blue" />
-                </mesh>
+                    <HotspotSphere
+                        key={hotspot.id}
+                        position={hotspot.position}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            if (typeof onHotspotClick === 'function') {
+                                onHotspotClick(hotspot);
+                            }
+                        }}
+                    />
                 ))}
             </group>
             )}

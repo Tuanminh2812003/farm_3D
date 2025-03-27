@@ -183,12 +183,34 @@ const modelsConfig = useMemo(
             position[1] + direction.y,
             position[2] + direction.z
         ];
+
+        console.log("rotation1", rotation[1]);
         
-        const newCameraRotation = [
-            rotation[0],
-            rotation[1]+90,
-            rotation[2]
+        let newCameraRotation = [
+
         ];
+
+        if(rotation[1] === 12){
+            newCameraRotation = [
+                rotation[0],
+                rotation[1]+78,
+                rotation[2]
+            ];
+        }else if(rotation[1] === 24){
+            newCameraRotation = [
+                rotation[0],
+                rotation[1]+66,
+                rotation[2]
+            ];
+        }else{
+            newCameraRotation = [
+                rotation[0],
+                rotation[1]+90,
+                rotation[2]
+            ];
+        }
+
+        console.log("newCameraPosition:", newCameraPosition);
         
         setTargetPosition(newCameraPosition);
         setTargetRotation(newCameraRotation);
@@ -213,6 +235,10 @@ const modelsConfig = useMemo(
         setShowDetailsPrompt(false); // Hide the details prompt when popup opens
         setTourPopupOpen(false); // Hide the tour popup when model popup opens
         console.log("Selected Model:", selectedModel); // Debugging the selected model
+
+        if(video){
+            backgroundAudioRef.current.pause();
+        }
     
         if (countdownInterval) {
             clearInterval(countdownInterval); // Dừng bộ đếm thời gian
@@ -468,6 +494,10 @@ const modelsConfig = useMemo(
             currentAudio.pause(); // Dừng audio hiện tại
             setCurrentAudio(null); // Xóa đối tượng audio hiện tại
         }
+        // ✅ Phát lại nhạc nền nếu có
+        if (backgroundAudioRef.current) {
+            backgroundAudioRef.current.play();
+        }
         if (tourActive && !paused) {
             moveToItem(tourIndex + 1);
         }
@@ -564,6 +594,29 @@ const modelsConfig = useMemo(
             moveToItem(tourIndex + 1);
         }
     };    
+
+    const backgroundAudioRef = useRef(null);
+
+    useEffect(() => {
+        const audio = new Audio('/Farm/Audio/kg.mp3');
+        audio.loop = true;
+        audio.volume = 0.4;
+        backgroundAudioRef.current = audio;
+
+        const playAudio = () => {
+            audio.play().catch((e) => {
+                console.warn("Autoplay bị chặn:", e);
+            });
+        };
+
+        document.addEventListener("click", playAudio, { once: true });
+
+        return () => {
+            audio.pause();
+            audio.currentTime = 0;
+            document.removeEventListener("click", playAudio);
+        };
+    }, []);
     
     // phát audio
 
@@ -723,7 +776,7 @@ const modelsConfig = useMemo(
                                                     <div className='sidebarDisc__button__text'>Hướng dẫn</div>
                                                     <div className='sidebarDisc__button__btn'><RiDragMoveFill /></div>
                                                 </div>
-                                                <div className='sidebarDisc__button' onClick={startTour}>
+                                                <div className='sidebarDisc__button' onClick={handleOpenPopUpUpdate}>
                                                     <div className='sidebarDisc__button__text'>Bắt đầu tour</div>
                                                     <div className='sidebarDisc__button__btn'><SiAwesomelists /></div>
                                                 </div>
