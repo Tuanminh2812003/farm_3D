@@ -27,6 +27,15 @@ const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, imageInfo,
         }
     }, [video, tourActive, onAudioEnded]);
 
+    useEffect(() => {
+        // Nếu chọn hotspot và description chứa iframe, thì pause audio
+        if (selectedHotspot?.description?.includes('<iframe')) {
+            if (audioRef.current) {
+                audioRef.current.pause();
+            }
+        }
+    }, [selectedHotspot]);
+
     const handleClose = () => {
         setSelectedHotspot(null);
         onClose();
@@ -57,7 +66,30 @@ const ModelPopup = ({ open, onClose, imageUrl, info, modelUrl, video, imageInfo,
                     </>
                 )}
 
-                {selectedHotspot && (
+                {selectedHotspot?.componentData && (
+                <div className="image-default">
+                    <Canvas className="canvas">
+                    <PictureFrame
+                        position={[0, 0, 0]}
+                        rotation={[0, -90, 0]}
+                        scale={3}
+                        imageUrl={selectedHotspot.componentData.imageUrl}
+                        modelUrl={selectedHotspot.componentData.modelUrl}
+                        info={selectedHotspot.componentData.info}
+                        onClick={() => {}}
+                        type={'model'}
+                        hotspots={[]}
+                        onHotspotClick={() => {}}
+                    />
+                    <OrbitControls />
+                    </Canvas>
+                    <div style={{ marginTop: "24px" }} className='image-default__inner__button' onClick={() => setSelectedHotspot(null)}>
+                    Quay lại
+                    </div>
+                </div>
+                )}
+
+                {selectedHotspot?.description && (
                     <div className="image-default">
                         <div className='image-default__inner' dangerouslySetInnerHTML={{ __html: selectedHotspot.description }} />
                         <div style={{marginTop:"24px"}} className='image-default__inner__button' onClick={() => setSelectedHotspot(null)}>

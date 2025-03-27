@@ -55,10 +55,14 @@ const ResizeHandler = ({ updateItemsForScreenSize }) => {
                         imageInfo: "/Farm/Image/2.jpg",
                         hotspots: [
                             {
-                              id: 'head3',
-                              position: [0, 0, 0.5],
-                              title: 'Đầu',
-                              description: '<div>Nó như này này</div>',
+                                id: 'hotspot1',
+                                position: [0, 0, 0.5],
+                                title: 'Chi tiết 3D',
+                                componentData: {
+                                    imageUrl: 'https://res.cloudinary.com/dqlelya6o/image/upload/v1733040773/x24rsgb40s2cctuyjfcy.png',
+                                    modelUrl: '/Farm/Model_bonus/base_basic_shaded.glb',
+                                    info: { artist: '1', title: '2', year: '3' }
+                                }
                             },
                             {
                               id: 'head4',
