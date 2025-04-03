@@ -82,13 +82,14 @@ const PopUpHowToMove = ({ open, handleClose }) => {
                     </div>
                     </div>
                     <div className='popUpMove__content5'>
-                        <ButtonVR />
                         <Button 
                             onClick={() => handleClose('free')} 
                             className='button2'
                         >
                             BẮT ĐẦU TRẢI NGHIỆM
                         </Button>
+                        <ButtonVR />
+                        
                     </div>
                     
                 </div>

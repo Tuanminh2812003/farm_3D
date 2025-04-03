@@ -744,23 +744,23 @@ const modelsConfig = useMemo(
                     </Canvas>
 
                     {/* Thanh sidebar */}
-                                        {/* <div className='sidebarMain'>
-                                            <div className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handlePreviousItem}>
+                                        <div className='sidebarMain'>
+                                            {/* <div className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handlePreviousItem}>
                                                 <MdSkipPrevious />
                                             </div>
                                             <div className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handleNextItem}>
                                                 <MdSkipNext />
-                                            </div>
+                                            </div> */}
                                             {!isFullscreen ? (
                                                 <button className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handleFullscreenToggle}><MdOutlineZoomOutMap /></button>
                                             ) : (
                                                 <button className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handleFullscreenToggle}><MdOutlineZoomInMap /></button>
                                             )}
-                                            <div type = "button" className={`sidebar ${navToggle ? 'sidebar-change' : ""}`} onClick={navHandler}>
+                                            {/* <div type = "button" className={`sidebar ${navToggle ? 'sidebar-change' : ""}`} onClick={navHandler}>
                                                 <div className='sidebar-top'></div>
                                                 <div className='sidebar-middle'></div>
                                                 <div className='sidebar-bottom'></div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                         {navToggle ? (
                                             <div className='sidebarDisc'>
@@ -787,7 +787,7 @@ const modelsConfig = useMemo(
                                             </div>
                                         ) : (
                                             ""
-                                        )} */}
+                                        )}
                                         {/* Thanh sidebar */}
 
                     {/* Nút bấm di chuyển */}
