@@ -68,7 +68,6 @@
     width: 48%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
 
 .popUpMove__content4{

@@ -744,7 +744,7 @@ const modelsConfig = useMemo(
                     </Canvas>
 
                     {/* Thanh sidebar */}
-                                        <div className='sidebarMain'>
+                                        {/* <div className='sidebarMain'>
                                             <div className={`fullscreen_button ${navToggle ? 'fullscreen_button-change' : ""}`} onClick={handlePreviousItem}>
                                                 <MdSkipPrevious />
                                             </div>
@@ -787,7 +787,7 @@ const modelsConfig = useMemo(
                                             </div>
                                         ) : (
                                             ""
-                                        )}
+                                        )} */}
                                         {/* Thanh sidebar */}
 
                     {/* Nút bấm di chuyển */}

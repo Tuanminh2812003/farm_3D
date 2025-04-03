@@ -65,13 +65,13 @@ const PopUpHowToMove = ({ open, handleClose }) => {
                             <img src='/NTST/HDSD2.png' className='popUpMove__content__content__inner__img'/>
                         </div>
                         <div className='popUpMove__content4' style={{ position: 'relative' }}>
-                        <Button
+                        {/* <Button
                             onClick={() => handleClose('update')} 
                             className='button1'
                             style={{ marginBottom: '0px !important' }}
                         >
                             BẮT ĐẦU TOUR
-                        </Button>
+                        </Button> */}
                         {/* <Button 
                             onClick={() => handleClose('free')} 
                             className='button2'
